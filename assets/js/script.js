@@ -26,14 +26,44 @@ function runGame () {
 }
 
 function higher () {
+    let num1 = document.getElementById("player-number");
+    num1 = parseInt(num1.innerText);
+    // console.log(num1);
 
+    let num2 = document.getElementById("computer-number").value;
+    num2 = Math.ceil(Math.random() * 100);
+    document.getElementById("computer-number").innerText = num2;
+    // console.log(num2);
+
+    // need to add quality check to ensure number 2 is not the same as number 1
+
+    calculateCorrectAnswer();
 }
 
 function lower () {
 
 }
 
-function chackAnswer () {
+function calculateCorrectAnswer () {
+
+    let num1 = document.getElementById("player-number");
+    num1 = parseInt(num1.innerText);
+    console.log(num1);
+
+    let num2 = document.getElementById("computer-number");
+    num2 = parseInt(num2.innerText);
+    console.log(num2);
+
+    // display message, add a little delay and start game again
+
+    if (num1 > num2) {
+        document.getElementById("message-area").innerHTML = "Well Done!!! You guessed correctly";
+        setTimeout(runGame(), 2000);
+    }
+    
+}
+
+function CheckAnswer () {
 
 }
 
