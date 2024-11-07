@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let num1 = Math.ceil(Math.random() * 100);
     document.getElementById("player-number").innerText = num1;
 
+    let num2 = "?";
+    document.getElementById("computer-number").innerText = num2;
+
     runGame();
 });
 
@@ -13,8 +16,7 @@ function runGame () {
     // create a random number for user to start with and add to HTML
 
     // create initial num 2 ? and add to HTML
-    let num2 = "?";
-    document.getElementById("computer-number").innerText = num2;
+
 
     let buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
@@ -51,7 +53,7 @@ function higher () {
     } else if (num1 > num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
-        endGame();
+        setTimeout(endGame, 3000);
     }
 
 }
@@ -79,7 +81,7 @@ function lower () {
     } else if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
-        endGame();
+        setTimeout(endGame, 3000);
     }
 
 }
@@ -109,6 +111,9 @@ function continueGame () {
     let num1 = document.getElementById("computer-number").innerText;
     document.getElementById("player-number").innerText = num1;
 
+    let num2 = "?";
+    document.getElementById("computer-number").innerText = num2;
+
     runGame();
 
 }
@@ -119,6 +124,9 @@ function endGame () {
 
     let num1 = Math.ceil(Math.random() * 100);
     document.getElementById("player-number").innerText = num1;
+
+    let num2 = "?";
+    document.getElementById("computer-number").innerText = num2;
 
     runGame();
 
