@@ -26,6 +26,7 @@ function runGame () {
 }
 
 function higher () {
+
     let num1 = document.getElementById("player-number");
     num1 = parseInt(num1.innerText);
     // console.log(num1);
@@ -35,9 +36,21 @@ function higher () {
     document.getElementById("computer-number").innerText = num2;
     // console.log(num2);
 
-    // need to add quality check to ensure number 2 is not the same as number 1
+    // ensure num1 doesn't equal num2
+    while (num1 === num2) {
+        num2 = Math.ceil(Math.random() * 100);
+    }
 
-    calculateCorrectAnswer();
+    if (num1 < num2) {
+        document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
+        incrementScore();
+        // continueGame()
+    } else if (num1 > num2) {
+        document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
+        displayHighScore();
+        endGame();
+    }
+
 }
 
 function lower () {
@@ -46,20 +59,21 @@ function lower () {
 
 function calculateCorrectAnswer () {
 
-    let num1 = document.getElementById("player-number");
-    num1 = parseInt(num1.innerText);
-    console.log(num1);
+    // let num1 = document.getElementById("player-number");
+    // num1 = parseInt(num1.innerText);
+    // console.log(num1);
 
-    let num2 = document.getElementById("computer-number");
-    num2 = parseInt(num2.innerText);
-    console.log(num2);
+    // let num2 = document.getElementById("computer-number");
+    // num2 = parseInt(num2.innerText);
+    // console.log(num2);
 
     // display message, add a little delay and start game again
 
-    if (num1 > num2) {
-        document.getElementById("message-area").innerHTML = "Well Done!!! You guessed correctly";
-        setTimeout(runGame(), 2000);
-    }
+    // if (num1 < num2) {
+    //     document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
+    // } else if (num1 > num2) {
+    //     document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
+    // }
     
 }
 
@@ -68,9 +82,27 @@ function CheckAnswer () {
 }
 
 function incrementScore () {
+    
+    let oldScore = parseInt(document.getElementById("current-score").innerText);
+    document.getElementById("current-score").innerText = ++oldScore;
 
 }
 
 function displayHighScore () {
+
+    let highScore = parseInt(document.getElementById("high-score").innerText);
+    let lastScore = parseInt(document.getElementById("current-score").innerText);
+
+    if (highScore < lastScore) {
+        highScore = lastScore;
+    }
+
+    document.getElementById("high-score").innerText = highScore;
+    
+}
+
+function endGame () {
+
+    document.getElementById("current-score").innerText = 0;
 
 }
