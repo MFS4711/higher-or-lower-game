@@ -1,4 +1,9 @@
+// Things we want when page loads
+
 document.addEventListener("DOMContentLoaded", function() {
+
+    let num1 = Math.ceil(Math.random() * 100);
+    document.getElementById("player-number").innerText = num1;
 
     runGame();
 });
@@ -6,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function runGame () {
 
     // create a random number for user to start with and add to HTML
-    let num1 = Math.ceil(Math.random() * 100);
-    document.getElementById("player-number").innerText = num1;
 
     // create initial num 2 ? and add to HTML
     let num2 = "?";
@@ -44,7 +47,7 @@ function higher () {
     if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
         incrementScore();
-        // continueGame()
+        setTimeout(continueGame, 3000);
     } else if (num1 > num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
@@ -55,29 +58,29 @@ function higher () {
 
 function lower () {
 
-}
-
-function calculateCorrectAnswer () {
-
-    // let num1 = document.getElementById("player-number");
-    // num1 = parseInt(num1.innerText);
+    let num1 = document.getElementById("player-number");
+    num1 = parseInt(num1.innerText);
     // console.log(num1);
 
-    // let num2 = document.getElementById("computer-number");
-    // num2 = parseInt(num2.innerText);
+    let num2 = document.getElementById("computer-number").value;
+    num2 = Math.ceil(Math.random() * 100);
+    document.getElementById("computer-number").innerText = num2;
     // console.log(num2);
 
-    // display message, add a little delay and start game again
+    // ensure num1 doesn't equal num2
+    while (num1 === num2) {
+        num2 = Math.ceil(Math.random() * 100);
+    }
 
-    // if (num1 < num2) {
-    //     document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
-    // } else if (num1 > num2) {
-    //     document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
-    // }
-    
-}
-
-function CheckAnswer () {
+    if (num1 > num2) {
+        document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
+        incrementScore();
+        setTimeout(continueGame, 3000);
+    } else if (num1 < num2) {
+        document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
+        displayHighScore();
+        endGame();
+    }
 
 }
 
@@ -101,8 +104,22 @@ function displayHighScore () {
     
 }
 
+function continueGame () {
+
+    let num1 = document.getElementById("computer-number").innerText;
+    document.getElementById("player-number").innerText = num1;
+
+    runGame();
+
+}
+
 function endGame () {
 
     document.getElementById("current-score").innerText = 0;
+
+    let num1 = Math.ceil(Math.random() * 100);
+    document.getElementById("player-number").innerText = num1;
+
+    runGame();
 
 }
