@@ -1,3 +1,43 @@
 body {
-    background-color: blue;
+    text-align: center;
+}
+
+#page-heading {
+    margin-top: 20px;
+}
+
+.card {
+    width: 100%;
+    margin: 20px;
+}
+
+.card-body {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#player-card {
+    background-color: lightblue;
+}
+
+#computer-card {
+    background-color: lightgreen;
+}
+
+#player-number, #computer-number {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+button {
+    height: 50px;
+    width: 200px;
+}
+
+p {
+    margin: 25px auto;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
