@@ -54,6 +54,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function higher () {
 
+    disableButtons();
+
     let num1 = document.getElementById("player-number");
     num1 = parseInt(num1.innerText);
     // console.log(num1);
@@ -82,6 +84,8 @@ function higher () {
 
 function lower () {
 
+    disableButtons();
+
     let num1 = document.getElementById("player-number");
     num1 = parseInt(num1.innerText);
     // console.log(num1);
@@ -99,11 +103,11 @@ function lower () {
     if (num1 > num2) {
         document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
         incrementScore();
-        setTimeout(continueGame, 3000);
+        setTimeout(continueGame, 2000);
     } else if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
-        setTimeout(endGame, 3000);
+        setTimeout(endGame, 2000);
     }
 
 }
@@ -131,6 +135,8 @@ function displayHighScore () {
 
 function continueGame () {
 
+    enableButtons();
+
     // originally wanted the num1 to equal the last num2 but issues where num1 beomes ?
 
     // let num1 = document.getElementById("computer-number").innerText;
@@ -154,6 +160,24 @@ function endGame () {
     let num2 = "?";
     document.getElementById("computer-number").innerText = num2;
 
+    enableButtons();
+
     // runGame();
 
+}
+
+// Function to disable all buttons
+function disableButtons() {
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.disabled = true;
+    }
+}
+
+// Function to enable all buttons
+function enableButtons() {
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.disabled = false;
+    }
 }
