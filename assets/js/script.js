@@ -8,27 +8,49 @@ document.addEventListener("DOMContentLoaded", function() {
     let num2 = "?";
     document.getElementById("computer-number").innerText = num2;
 
-    runGame();
-});
-
-function runGame () {
-
-    // create a random number for user to start with and add to HTML
-
-    // create initial num 2 ? and add to HTML
-
-
     let buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
-        button.addEventListener("click", function() {
-            if (this.getAttribute("data-type") === "higher") {
-                higher();
-            } else if (this.getAttribute("data-type") === "lower") {
-                lower();
-            }
-        })
-    }
+    button.addEventListener("click", function() {
+        if (this.getAttribute("data-type") === "higher") {
+            higher();
+        } else if (this.getAttribute("data-type") === "lower") {
+            lower();
+        }
+    })
 }
+
+    // runGame();
+});
+
+// let buttons = document.getElementsByTagName("button");
+// for (let button of buttons) {
+//     button.addEventListener("click", function() {
+//         if (this.getAttribute("data-type") === "higher") {
+//             higher();
+//         } else if (this.getAttribute("data-type") === "lower") {
+//             lower();
+//         }
+//     })
+// }
+
+// function runGame () {
+
+//     // create a random number for user to start with and add to HTML
+
+//     // create initial num 2 ? and add to HTML
+
+
+//     let buttons = document.getElementsByTagName("button");
+//     for (let button of buttons) {
+//         button.addEventListener("click", function() {
+//             if (this.getAttribute("data-type") === "higher") {
+//                 higher();
+//             } else if (this.getAttribute("data-type") === "lower") {
+//                 lower();
+//             }
+//         })
+//     }
+// }
 
 function higher () {
 
@@ -89,8 +111,9 @@ function lower () {
 function incrementScore () {
     
     let oldScore = parseInt(document.getElementById("current-score").innerText);
+    console.log("old score:", oldScore);
     document.getElementById("current-score").innerText = ++oldScore;
-
+    console.log("old score:", oldScore);
 }
 
 function displayHighScore () {
@@ -117,7 +140,7 @@ function continueGame () {
     // let num2 = "?";
     document.getElementById("computer-number").innerText = "?";
 
-    runGame();
+    // runGame();
 
 }
 
@@ -131,6 +154,6 @@ function endGame () {
     let num2 = "?";
     document.getElementById("computer-number").innerText = num2;
 
-    runGame();
+    // runGame();
 
 }
