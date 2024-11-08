@@ -108,11 +108,14 @@ function displayHighScore () {
 
 function continueGame () {
 
-    let num1 = document.getElementById("computer-number").innerText;
+    // originally wanted the num1 to equal the last num2 but issues where num1 beomes ?
+
+    // let num1 = document.getElementById("computer-number").innerText;
+    let num1 = Math.ceil(Math.random() * 100);
     document.getElementById("player-number").innerText = num1;
 
-    let num2 = "?";
-    document.getElementById("computer-number").innerText = num2;
+    // let num2 = "?";
+    document.getElementById("computer-number").innerText = "?";
 
     runGame();
 
