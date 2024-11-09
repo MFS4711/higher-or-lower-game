@@ -109,6 +109,7 @@ function lower () {
     } else if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
+        incorrectColour();
         setTimeout(endGame, 1500);
     }
 
@@ -150,6 +151,8 @@ function continueGame () {
     // console.log("num2:", num2);
     // runGame();
 
+    document.getElementById("message-area").innerHTML = "";
+
 }
 
 function endGame () {
@@ -162,7 +165,10 @@ function endGame () {
     let num2 = "?";
     document.getElementById("computer-number").innerText = num2;
 
+    document.getElementById("message-area").innerHTML = "";
+
     enableButtons();
+    removeColour();
 
     // runGame();
 
@@ -186,6 +192,10 @@ function enableButtons() {
 
 function correctColour () {
     document.getElementById("computer-card").style.backgroundColor = "green";
+}
+
+function incorrectColour () {
+    document.getElementById("computer-card").style.backgroundColor = "red";
 }
 
 function removeColour() {
