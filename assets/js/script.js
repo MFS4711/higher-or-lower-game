@@ -73,6 +73,7 @@ function higher () {
     if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
         incrementScore();
+        correctColour();
         setTimeout(continueGame, 3000);
     } else if (num1 > num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
@@ -103,11 +104,12 @@ function lower () {
     if (num1 > num2) {
         document.getElementById("message-area").innerHTML = `<p>Well Done!!! You guessed correctly</p>`;
         incrementScore();
-        setTimeout(continueGame, 2000);
+        correctColour();
+        setTimeout(continueGame, 1500);
     } else if (num1 < num2) {
         document.getElementById("message-area").innerHTML = `<p>Unfortunately you guessed wrong :(</p>`;
         displayHighScore();
-        setTimeout(endGame, 2000);
+        setTimeout(endGame, 1500);
     }
 
 }
@@ -136,17 +138,16 @@ function displayHighScore () {
 function continueGame () {
 
     enableButtons();
-
-    // originally wanted the num1 to equal the last num2 but issues where num1 beomes ?
+    removeColour();
 
     let num1 = document.getElementById("computer-number").innerText;
     // let num1 = Math.ceil(Math.random() * 100);
     document.getElementById("player-number").innerText = num1;
-    console.log("num1:", num1);
+    // console.log("num1:", num1);
 
     let num2 = "?";
     document.getElementById("computer-number").innerText = num2;
-    console.log("num2:", num2);
+    // console.log("num2:", num2);
     // runGame();
 
 }
@@ -181,4 +182,12 @@ function enableButtons() {
     for (let button of buttons) {
         button.disabled = false;
     }
+}
+
+function correctColour () {
+    document.getElementById("computer-card").style.backgroundColor = "green";
+}
+
+function removeColour() {
+    document.getElementById("computer-card").style.removeProperty("background-color");
 }
